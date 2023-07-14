@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const category= 'technology';
+const response = await fetch(`https://api.nytimes.com/svc/topstories/v2/${category}.json?api-key=${import.meta.env.PUBLIC_NYT_API_KEY}`);
+const articles= await response.json();
+const title=`Latest ${category} News -The New York Times`;
+---
+
+
+<BaseLayout title ={title}>
+<div>
+    <h1>{title}</h1>
+    <ul>
+        {JSON.stringify(articles.results)}
+        <!-- {articles.results.map(article =>( 
+            <li>
+                <a>article.title</a>
+            </li>
+        ))} -->
+    </ul>
+
+
+
+
+
+
+
+
+
+
+</BaseLayout>
